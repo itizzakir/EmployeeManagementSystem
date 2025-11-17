@@ -29,7 +29,8 @@ export const AuthProvider = ({ children }) => {
     } else if (role === 'employee') {
       const employee = employeeUsers.find(
         (emp) =>
-          (emp.professionalDetails.employmentCode === id ||
+          (emp.id === id ||
+            emp.professionalDetails.employmentCode === id ||
             emp.professionalDetails.companyMail === id) &&
           emp.password === password
       );
