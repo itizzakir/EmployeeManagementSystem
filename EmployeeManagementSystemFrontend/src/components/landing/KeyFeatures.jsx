@@ -1,13 +1,35 @@
-// src/components/sections/KeyFeatures.jsx
 import React from 'react';
+import { motion } from 'framer-motion'; // ✨ Import
 
-const FeatureCard = ({ icon, title, children }) => (  <div className="bg-white p-8 rounded-lg shadow-sm border border-slate-200 text-center">
+// ✨ Define animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, // ✨ Each child will animate 0.2s after the previous
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 50 }, // ✨ Start invisible and 50px down
+  visible: {
+    opacity: 1,
+    y: 0, // ✨ Animate to full opacity and original position
+    transition: { type: 'spring', stiffness: 100 },
+  },
+};
+
+const FeatureCard = ({ icon, title, children }) => (
+  // ✨ Wrap the card in motion.div and apply the item variants
+  <motion.div variants={itemVariants} className="bg-white p-8 rounded-lg shadow-sm border border-slate-200 text-center">
     <div className="w-16 h-16 bg-purple-100 rounded-full mx-auto flex items-center justify-center mb-6">
       {icon}
     </div>
     <h3 className="text-xl font-bold text-slate-900 mb-3">{title}</h3>
     <p className="text-slate-600">{children}</p>
-  </div>
+  </motion.div>
 );
 
 const KeyFeatures = () => {
@@ -16,10 +38,18 @@ const KeyFeatures = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">Everything Your HR Team Needs</h2>
-          <p className="text-lg text-slate-600 mt-4 max-w-2xl mx-auto">            One connected platform to automate workflows, support employees, and make better decisions.
+          <p className="text-lg text-slate-600 mt-4 max-w-2xl mx-auto">
+            One connected platform to automate workflows, support employees, and make better decisions.
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* ✨ Wrap the grid in motion.div and apply variants */}
+        <motion.div
+          className="grid md:grid-cols-3 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible" // ✨ Animate when it scrolls into view
+          viewport={{ once: true, amount: 0.3 }} // ✨ Trigger animation once
+        >
           <FeatureCard
             icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" /></svg>}
             title="Automated HRIS & Payroll"
@@ -38,7 +68,7 @@ const KeyFeatures = () => {
           >
             Launch surveys, analyze feedback with AI, and take action to build a positive and inclusive company culture.
           </FeatureCard>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,37 +1,35 @@
 // src/App.jsx
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/LandingPage';
+import LoginPage from './pages/LoginPage';
+import AdminSignupPage from './pages/AdminSignupPage';
+import DashboardLayout from './components/layout/DashboardLayout';
 
-// Common Components
-import Header from './components/common/Header';
-import Footer from './components/common/Footer';
-
-// Section Components
-import Hero from './components/sections/Hero';
-import KeyFeatures from './components/sections/KeyFeatures';
-import CoreHRIS from './components/sections/CoreHRIS';
-import EmpowerAI from './components/sections/EmpowerAI';
-import Integrations from './components/sections/Integrations';import SuccessMetrics from './components/sections/SuccessMetrics';
-import SocialProof from './components/sections/SocialProof';
-import FinalCTA from './components/sections/FinalCTA';
+// Import your pages
+import AdminDashboardPage from './pages/AdminDashboardPage'; // This is your page with the Employee List
+import EmployeeDashboardPage from './pages/EmployeeDashboardPage';
 
 const App = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <div className="min-h-screen bg-white font-sans text-slate-800">
-      <Header />
-      <main>
-        <Hero />
-        <KeyFeatures />
-        <CoreHRIS />
-        <EmpowerAI />
-        <SuccessMetrics />
-        <SocialProof />
-        <Integrations />
-        <FinalCTA />
-      </main>
-      <Footer currentYear={currentYear} />
-    </div>
+    <Routes>
+      {/* Public Routes */}
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/login/:role" element={<LoginPage />} />
+      <Route path="/signup/admin" element={<AdminSignupPage />} />
+      
+      {/* Dashboard Layout Wrapper */}
+      <Route element={<DashboardLayout />}>
+        
+        {/* Admin Routes */}
+        <Route path="/dashboard/admin" element={<AdminDashboardPage />} />
+        <Route path="/dashboard/employees" element={<AdminDashboardPage />} /> {/* ✨ ADD THIS LINE */}
+
+        {/* Employee Route */}
+        <Route path="/dashboard/employee" element={<EmployeeDashboardPage />} />
+        
+      </Route>
+    </Routes>
   );
 };
 
