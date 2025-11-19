@@ -8,14 +8,8 @@ const EmployeeDashboardPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Wait for context to load
-    if (!currentUser) {
-      return;
-    }
-    
-    // Check role
-    if (currentUser.role !== 'employee') {
-      navigate('/login/employee'); // Redirect if not employee
+    if (!currentUser || currentUser.role !== 'employee') {
+      navigate('/login/employee');
     }
   }, [currentUser, navigate]);
 
