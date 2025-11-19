@@ -9,20 +9,12 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem('currentUser');
-    if (storedUser) {
-      setCurrentUser(JSON.parse(storedUser));
-    }
-  }, []);
-
   const login = (role, id, password) => {
     let user = null;
     if (role === 'admin') {
       if (adminUser.id === id && adminUser.password === password) {
         user = adminUser;
         setCurrentUser(user);
-        localStorage.setItem('currentUser', JSON.stringify(user));
         navigate('/dashboard/admin');
         return true;
       }
@@ -37,7 +29,6 @@ export const AuthProvider = ({ children }) => {
       if (employee) {
         user = employee;
         setCurrentUser(user);
-        localStorage.setItem('currentUser', JSON.stringify(user));
         navigate('/dashboard/employee');
         return true;
       }
@@ -47,7 +38,6 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setCurrentUser(null);
-    localStorage.removeItem('currentUser');
     navigate('/');
   };
 
@@ -66,6 +56,7 @@ export const AuthProvider = ({ children }) => {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {
   return useContext(AuthContext);
 };

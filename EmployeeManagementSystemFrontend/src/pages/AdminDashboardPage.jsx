@@ -8,17 +8,10 @@ const AdminDashboardPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // We must wait for the context to load the user.
-    // If currentUser is still null/undefined, don't do anything yet.
-    if (!currentUser) {
-      return; 
+    if (!currentUser || currentUser.role !== 'admin') {
+      navigate('/login/admin');
     }
-
-    // Now that we know currentUser is not null, check the role.
-    if (currentUser.role !== 'admin') {
-      navigate('/login/admin'); // Redirect if not admin
-    }
-  }, [currentUser, navigate]); // This effect re-runs when currentUser changes
+  }, [currentUser, navigate]);
 
   // ✨ THIS IS THE GUARD ✨
   // If currentUser is null OR not an admin, render nothing

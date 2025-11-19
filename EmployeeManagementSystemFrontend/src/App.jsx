@@ -7,7 +7,7 @@ import AdminSignupPage from './pages/AdminSignupPage';
 import DashboardLayout from './components/layout/DashboardLayout';
 
 // Import your pages
-import AdminDashboardPage from './pages/AdminDashboardPage'; // This is your page with the Employee List
+import AdminDashboardPage from './pages/AdminDashboardPage'; 
 import EmployeeDashboardPage from './pages/EmployeeDashboardPage';
 
 const App = () => {

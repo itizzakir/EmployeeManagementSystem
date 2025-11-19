@@ -46,7 +46,7 @@ const Sidebar = () => {
   return (
     <div className="w-64 h-screen bg-white shadow-lg p-6 flex flex-col">
       <div className="mb-8">
-        <Logo disableLink={true} />
+        <Logo />
       </div>
       <nav className="flex-1">
         <ul className="space-y-2">
