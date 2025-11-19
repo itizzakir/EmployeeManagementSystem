@@ -42,7 +42,7 @@
 - Spring Data JPA  
 - REST API  
 - MySQL  
-- (Optional: Spring Security / JWT)
+- Spring Security / JWT
 
 ---
 
