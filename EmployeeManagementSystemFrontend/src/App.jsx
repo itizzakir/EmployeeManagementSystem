@@ -1,37 +1,40 @@
 // src/App.jsx
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import LandingPage from './pages/LandingPage';
+import LoginPage from './pages/LoginPage';
+import AdminSignupPage from './pages/AdminSignupPage';
+import DashboardLayout from './components/layout/DashboardLayout';
+import ProtectedRoute from './components/auth/ProtectedRoute'; // 1. Import ProtectedRoute
 
-// Common Components
-import Header from './components/common/Header';
-import Footer from './components/common/Footer';
-
-// Section Components
-import Hero from './components/sections/Hero';
-import KeyFeatures from './components/sections/KeyFeatures';
-import CoreHRIS from './components/sections/CoreHRIS';
-import EmpowerAI from './components/sections/EmpowerAI';
-import Integrations from './components/sections/Integrations';import SuccessMetrics from './components/sections/SuccessMetrics';
-import SocialProof from './components/sections/SocialProof';
-import FinalCTA from './components/sections/FinalCTA';
+// Import your pages
+import AdminDashboardPage from './pages/AdminDashboardPage';
+import EmployeeDashboardPage from './pages/EmployeeDashboardPage';
 
 const App = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <div className="min-h-screen bg-white font-sans text-slate-800">
-      <Header />
-      <main>
-        <Hero />
-        <KeyFeatures />
-        <CoreHRIS />
-        <EmpowerAI />
-        <SuccessMetrics />
-        <SocialProof />
-        <Integrations />
-        <FinalCTA />
-      </main>
-      <Footer currentYear={currentYear} />
-    </div>
+    <AuthProvider>
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login/:role" element={<LoginPage />} /> 
+        <Route path="/signup/admin" element={<AdminSignupPage />} />
+        
+        {/* Protected Routes with Dashboard Layout */}
+        <Route element={<DashboardLayout />}>
+          {/* Admin Routes */}
+          <Route element={<ProtectedRoute requiredRole="ROLE_ADMIN" />}>
+            <Route path="/dashboard/admin" element={<AdminDashboardPage />} />
+          </Route>
+
+          {/* Employee Route */}
+          <Route element={<ProtectedRoute requiredRole="ROLE_EMPLOYEE" />}>
+            <Route path="/dashboard/employee" element={<EmployeeDashboardPage />} />
+          </Route>
+        </Route>
+      </Routes>
+    </AuthProvider>
   );
 };
 
