@@ -109,6 +109,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee getEmployeeById(Long id) {
+        if (id == null) {
+            return null;
+        }
         return employeeRepository.findById(id).orElse(null);
     }
 
@@ -119,6 +122,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee updateEmployee(Long id, EmployeeDto employeeDto) {
+        if (id == null) {
+            return null;
+        }
         Employee existingEmployee = employeeRepository.findById(id).orElse(null);
         if (existingEmployee != null) {
             // Update basic employee details (admin can update these)
@@ -218,11 +224,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void deleteEmployee(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Employee ID cannot be null");
+        }
         employeeRepository.deleteById(id);
     }
 
     @Override
     public boolean isEmployeeOwner(String username, Long employeeId) {
+        if (employeeId == null) {
+            return false;
+        }
         return employeeRepository.findById(employeeId)
                 .map(employee -> employee.getUser() != null && employee.getUser().getEmail().equals(username))
                 .orElse(false);
@@ -235,12 +247,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public byte[] downloadPayslip(Long employeeId, String username) {
+        if (employeeId == null) {
+            throw new IllegalArgumentException("Employee ID cannot be null for downloading payslip.");
+        }
         Employee employee = employeeRepository.findById(employeeId)
                 .orElseThrow(() -> new IllegalArgumentException("Employee not found with ID: " + employeeId));
-
-        if (!isEmployeeOwner(username, employeeId)) {
-            throw new SecurityException("User is not authorized to download this payslip.");
-        }
 
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
             Document document = new Document();

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -66,13 +68,15 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}/payslip")
+    @PreAuthorize("hasRole('ADMIN') or @employeeServiceImpl.isEmployeeOwner(authentication.name, #id)")
     public ResponseEntity<byte[]> downloadPayslip(@PathVariable Long id, Authentication authentication) {
         String username = authentication.getName();
         byte[] payslip = employeeService.downloadPayslip(id, username);
         if (payslip != null) {
+            MediaType pdfMediaType = org.springframework.http.MediaType.APPLICATION_PDF;
             return ResponseEntity.ok()
                     .header("Content-Disposition", "attachment; filename=\"payslip_" + id + ".pdf\"")
-                    .contentType(org.springframework.http.MediaType.APPLICATION_PDF)
+                    .contentType(pdfMediaType)
                     .body(payslip);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);

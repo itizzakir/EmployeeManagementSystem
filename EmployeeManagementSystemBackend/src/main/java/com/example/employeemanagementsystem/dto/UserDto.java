@@ -6,5 +6,5 @@ import lombok.Data;
 public class UserDto {
     private String email;
     private String password;
-    private String role; // ✨ ADDED THIS FIELD
+    private String role; 
 }
