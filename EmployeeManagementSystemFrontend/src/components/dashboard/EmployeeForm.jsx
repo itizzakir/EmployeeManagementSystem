@@ -1,6 +1,7 @@
 // src/components/dashboard/EmployeeForm.jsx
 import React, { useState, useEffect } from 'react';
 import { createEmployee, updateEmployee } from '../../services/employeeService';
+import { toast } from 'react-toastify';
 
 // --- Helper Components (FormInput, AddressFields) ---
 const FormInput = ({ label, id, ...props }) => {
@@ -184,8 +185,10 @@ const EmployeeForm = ({ employee, onSuccess, onClose }) => {
         try {
             if (isEditMode) {
                 await updateEmployee(employee.id, formData);
+                toast.success('Employee updated successfully!');
             } else {
                 await createEmployee(formData);
+                toast.success('Employee created successfully!');
             }
             onSuccess(); // Notify parent component (AdminDashboardPage)
         } catch (err) {

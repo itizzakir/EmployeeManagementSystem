@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { toast } from 'react-toastify';
 
 const AdminSignupForm = () => {
   const { adminSignup } = useAuth();
@@ -30,7 +31,11 @@ const AdminSignupForm = () => {
 
     const success = await adminSignup(formData.email, formData.password);
 
-    if (!success) {
+    if (success) {
+      toast.success('Admin account created successfully!');
+      // Assuming successful signup navigates to admin login
+      navigate('/login/admin'); 
+    } else {
       setError('An error occurred during signup.');
     }
   };

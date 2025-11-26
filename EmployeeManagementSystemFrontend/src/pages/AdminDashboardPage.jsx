@@ -5,6 +5,7 @@ import EmployeeForm from '../components/dashboard/EmployeeForm';
 import ViewOnlyDetails from '../components/dashboard/ViewOnlyDetails';
 import Modal from '../components/common/Modal';
 import { motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'react-toastify';
 
 const AdminDashboardPage = () => {
   const [employees, setEmployees] = useState([]);
@@ -53,6 +54,7 @@ const AdminDashboardPage = () => {
     if (window.confirm('Are you sure you want to delete this employee?')) {
       try {
         await deleteEmployee(id);
+        toast.success('Employee deleted successfully!');
         // Refresh employee list after deletion
         setEmployees(prev => prev.filter(emp => emp.id !== id));
       } catch (err) {

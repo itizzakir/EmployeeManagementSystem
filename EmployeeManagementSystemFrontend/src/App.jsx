@@ -6,7 +6,9 @@ import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import AdminSignupPage from './pages/AdminSignupPage';
 import DashboardLayout from './components/layout/DashboardLayout';
-import ProtectedRoute from './components/auth/ProtectedRoute'; // 1. Import ProtectedRoute
+import ProtectedRoute from './components/auth/ProtectedRoute';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Import your pages
 import AdminDashboardPage from './pages/AdminDashboardPage';
@@ -34,6 +36,7 @@ const App = () => {
           </Route>
         </Route>
       </Routes>
+      <ToastContainer />
     </AuthProvider>
   );
 };

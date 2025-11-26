@@ -28,7 +28,7 @@ const Sidebar = () => {
   // Define links based on role
   const adminLinks = [
     { name: 'Dashboard', to: '/dashboard/admin', icon: <HomeIcon /> },
-    { name: 'Employees', to: '/dashboard/employees', icon: <UsersIcon /> }, // Example
+
   ];
 
   const employeeLinks = [
@@ -49,7 +49,7 @@ const Sidebar = () => {
   return (
     <div className="w-64 h-screen bg-white shadow-lg p-6 flex flex-col">
       <div className="mb-8">
-        <Logo />
+        <Logo to={currentUser?.role === 'ROLE_ADMIN' ? '/dashboard/admin' : '/dashboard/employee'} />
       </div>
       <nav className="flex-1">
         <ul className="space-y-2">

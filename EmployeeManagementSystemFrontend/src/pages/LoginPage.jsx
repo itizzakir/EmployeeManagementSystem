@@ -3,6 +3,7 @@ import { useNavigate, Link, useParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Logo from '../components/common/Logo';
 import { motion } from 'framer-motion';
+import { toast } from 'react-toastify';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -41,7 +42,9 @@ const LoginPage = () => {
     e.preventDefault();
     setError('');
     const success = await login(email, password);
-    if (!success) {
+    if (success) {
+      toast.success('Login successful!');
+    } else {
       setError('Invalid credentials. Please try again.');
     }
   };

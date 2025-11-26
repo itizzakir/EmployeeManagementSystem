@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Logo = ({ className }) => {
+const Logo = ({ className, to = "/" }) => {
   const word = "Empower";
   const letters = word.split("");
 
@@ -35,7 +35,7 @@ const Logo = ({ className }) => {
   };
 
   return (
-    <a href="/" className={`flex items-center space-x-2 ${className}`}>
+    <a href={to} className={`flex items-center space-x-2 ${className}`}>
       <svg
         width="32"
         height="32"

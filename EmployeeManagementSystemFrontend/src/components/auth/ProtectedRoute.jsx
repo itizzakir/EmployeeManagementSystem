@@ -14,7 +14,7 @@ const ProtectedRoute = ({ requiredRole }) => {
   // 2. Once loading is false, then check for authentication
   if (!isAuthenticated) {
     // If not authenticated, redirect to the login page
-    return <Navigate to="/" replace />;
+    return <Navigate to="/login/employee" replace />;
   }
 
   if (requiredRole && currentUser?.role !== requiredRole) {
