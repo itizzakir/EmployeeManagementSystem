@@ -19,7 +19,7 @@ const AddressFields = ({ legend, data, onChange, namePrefix }) => (
         <legend className="text-sm font-medium text-slate-800 px-1">{legend}</legend>
         <FormInput label="Address Line 1" name={`${namePrefix}.addressLine1`} value={data?.addressLine1 || ''} onChange={onChange} required />
         <FormInput label="Address Line 2" name={`${namePrefix}.addressLine2`} value={data?.addressLine2 || ''} onChange={onChange} />
-        <FormInput label="City" name={`${namePrefix}.city`} value={data?.city || ''} onChange={handleChange} required />
+        <FormInput label="City" name={`${namePrefix}.city`} value={data?.city || ''} onChange={onChange} required />
         <FormInput label="Pin Code" name={`${namePrefix}.pinCode`} value={data?.pinCode || ''} onChange={onChange} pattern="\d{6}" title="6 digits" required />
     </fieldset>
 );
