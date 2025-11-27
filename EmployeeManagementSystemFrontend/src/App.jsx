@@ -10,7 +10,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// Import your pages
+// Import your pages here
 import AdminDashboardPage from './pages/AdminDashboardPage';
 import EmployeeDashboardPage from './pages/EmployeeDashboardPage';
 
