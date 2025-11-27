@@ -5,12 +5,28 @@
 
 <h1 align="center">🚀 EMP O W E R — Employee Management System</h1>
 
+<div align="center">
+
+[![Frontend - React](https://img.shields.io/badge/Frontend-Vite%20React-FFD700?style=for-the-badge&logo=react&logoColor=black)]()
+[![Tailwind](https://img.shields.io/badge/Styling-TailwindCSS-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)]()
+[![SpringBoot](https://img.shields.io/badge/Backend-SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)]()
+[![MySQL](https://img.shields.io/badge/Database-MySQL-00618A?style=for-the-badge&logo=mysql&logoColor=white)]()
+![API](https://img.shields.io/badge/API-JPA%20REST-orange?style=for-the-badge)
+
+</div>
+
+---
+
+# 🔴 **LIVE DEMO**
+
 <p align="center">
-  <img src="https://img.shields.io/badge/Frontend-Vite%20React-FFD700?style=for-the-badge&logo=react&logoColor=black" />
-  <img src="https://img.shields.io/badge/Styling-TailwindCSS-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white" />
-  <img src="https://img.shields.io/badge/Backend-SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" />
-  <img src="https://img.shields.io/badge/Database-MySQL-00618A?style=for-the-badge&logo=mysql&logoColor=white" />
-  <img src="https://img.shields.io/badge/API-JPA%20REST-orange?style=for-the-badge" />
+  <a href="https://empower-demo.vercel.app/" target="_blank">
+    <img src="https://img.shields.io/badge/🚀 LIVE DEMO Available-3B82F6?style=for-the-badge&logo=vercel&logoColor=white" />
+  </a>
+</p>
+
+<p align="center">
+  <i>Click above to explore the live, fully responsive EMP O W E R demo!</i>
 </p>
 
 ---
@@ -42,31 +58,30 @@
 - Spring Data JPA  
 - REST API  
 - MySQL  
-- (Optional: Spring Security / JWT)
+- (Optional: JWT Authentication)
 
 ---
 
 # 🔐 Role-Based Login
 
-🔎 Login using **Employment Code / Company Email + Password**  
-🔗 Backend checks role  
-➡️ Redirects users automatically to:
+Users can log in using **Employment Code / Company Email + Password**.  
+Backend validates and redirects based on role:
 
-🛡️ **Admin Dashboard**  
-👩‍💼 **Employee Dashboard**
+### 🛡️ **Admin Dashboard**  
+### 👩‍💼 **Employee Dashboard**
 
 ---
 
 # 🛡️ Admin Dashboard (Super User)
 
-### Admin Capabilities:
+### Admin Can:
 ✔ Add employee  
 ✔ Update employee (with restrictions)  
 ✔ Delete employee  
 ✔ View employee table  
 ✔ Use action icons → View | Edit | Delete  
 
-### Employee Table Columns:
+### Employee Table Fields:
 - Employment Code  
 - Name  
 - Company Email  
@@ -91,26 +106,16 @@ Employees can only **view** their data:
 
 # 🗂 Employee Record Structure
 
----
-
 ## 🧍 Personal Details (Mandatory)
 
-### Fields:
-- Full Name  
-- DOB  
-- Gender  
-- Age  
-- Current & Permanent Address (City, Address 1 & 2, Pin)  
-- Mobile  
-- Personal Email  
-- Emergency Contact  
+Fields include name, DOB, gender, addresses, mobile, email, emergency contact, etc.  
 
 ### Validations:
 - Employment Code → 6 digits  
 - Mobile → 10 digits  
 - Pin Code → 6 digits  
 - Age → 1–3 digits  
-- Email → Valid format  
+- Email → valid format  
 
 ### ❌ Admin Cannot Edit:
 - Employment Code  
@@ -121,18 +126,9 @@ Employees can only **view** their data:
 
 ## 🏢 Professional Details (Mandatory)
 
-Fields:
-- Emp Code  
-- Company Mail  
-- Office Phone  
-- Office Address (Line 1 & 2 + Pin)  
-- Reporting Manager  
-- HR Name  
-- Date of Joining  
-- Employment History  
+Includes company mail, office phone, manager, HR, joining date, history, etc.
 
-### Restrictions:
-❌ Admin cannot edit:  
+### ❌ Admin Cannot Edit:
 - Employment Code  
 - Company Mail  
 - Date of Joining  
@@ -140,27 +136,21 @@ Fields:
 ---
 
 ## 💼 Project Details (Optional)
-Contains:
-- Project Code  
-- Start/End Date  
-- Project Name  
-- Reporting Manager Email/Code  
 
-Supports both **current + past** projects.
+Supports:  
+✔ Current project  
+✔ Past projects  
+
+Fields: Project code, name, dates, manager email/code.
 
 ---
 
 ## 💰 Finance (Mandatory)
-Fields:
-- PAN  
-- Aadhar  
-- Bank Name  
-- Branch  
-- IFSC Code  
-- CTC Breakdown  
 
-📄 Employees can download **6 months payslips (PDF)**  
-(Admin cannot download payslips)
+Includes PAN, Aadhar, bank info, IFSC, CTC breakdown.
+
+📄 Employees can download **six months’ payslips (PDF)**  
+❌ Admin cannot download payslips  
 
 ---
 
@@ -168,10 +158,10 @@ Fields:
 
 ✨ Tailwind CSS animations  
 ✨ Smooth transitions  
-✨ Modern card components  
-✨ Mobile responsive  
+✨ Modern card UI  
+✨ Fully responsive  
 ✨ Fast Vite HMR  
-✨ Elegant layouts
+✨ Clean layouts  
 
 <p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?size=22&duration=3000&color=38BDF8&center=true&width=500&lines=Fast+UI.;Smooth+Transitions.;Beautiful+Design.;Fully+Responsive.;" />
@@ -182,6 +172,7 @@ Fields:
 # ⚙️ Installation & Setup
 
 ## 🟦 Frontend Setup (Vite + React)
+
 ```bash
 cd frontend
 npm install
