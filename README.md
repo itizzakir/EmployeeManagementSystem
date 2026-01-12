@@ -5,7 +5,7 @@
 
 <h1 align="center">🚀 EMP O W E R — Employee Management System</h1>
 
-<div align="center">
+<div align="center"> 
 
 [![Frontend - React](https://img.shields.io/badge/Frontend-Vite%20React-FFD700?style=for-the-badge&logo=react&logoColor=black)]()
 [![Tailwind](https://img.shields.io/badge/Styling-TailwindCSS-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)]()
